@@ -1,3 +1,8 @@
-export default function Page() {
-  return <div>Page</div>;
+import React from 'react';
+import News from '@/components/News';
+
+function page() {
+  return <News />;
 }
+
+export default page;
