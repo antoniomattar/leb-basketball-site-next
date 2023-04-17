@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-key */
 import GameCard from './GameCard';
 
-const GamesList = async () => {
+export default async function GamesList() {
   const gamesListRequest = await fetch(
     'http://247basketball.live/json_r_matchs.php'
   ).then((response) => response.json());
@@ -19,6 +19,4 @@ const GamesList = async () => {
       </center>
     </>
   );
-};
-
-export default GamesList;
+}
