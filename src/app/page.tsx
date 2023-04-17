@@ -1,6 +1,11 @@
-import 'bootstrap/dist/css/bootstrap.css';
 import GamesList from '@/components/GamesList';
+import Standings from '@/components/Standings';
 
 export default async function page() {
-  return <GamesList />;
+  return (
+    <>
+      <Standings />
+      <GamesList />
+    </>
+  );
 }
