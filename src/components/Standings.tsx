@@ -19,7 +19,7 @@ export default async function Standings() {
             <table className="table-striped table">
               <thead>
                 <tr>
-                  <th scope="col" width="20%">
+                  <th scope="col" data-width="20%">
                     Team
                   </th>
                   <th scope="col">W</th>
