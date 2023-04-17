@@ -1,39 +1,39 @@
 /* eslint-disable @next/next/no-img-element */
 function GameCard(props: any) {
-  const team_a_image = `http://leb.basketball.247.s3.amazonaws.com/logo/${props.team_a}_p.png`;
-  const team_b_image = `http://leb.basketball.247.s3.amazonaws.com/logo/${props.team_b}_p.png`;
+  const BASE_URL = 'http://leb.basketball.247.s3.amazonaws.com';
+  const team_a_image_url = `${BASE_URL}/logo/${props.team_a}_p.png`;
+  const team_b_image_url = `${BASE_URL}/logo/${props.team_b}_p.png`;
   return (
     <>
-      <div className="row justify-center">
-        <div className="col-lg-1 col-md-1 col-xs-1">
-          <a className="thumbnail">
-            <img src={team_a_image} alt={props.team_a} />
+      <div className="flex items-center">
+        <div className="w-1/12">
+          <a>
+            <img src={team_a_image_url} alt={props.team_a} className="w-full" />
           </a>
         </div>
-        <div className="col-lg-1 col-md-1 col-xs-1">
-          <a className="thumbnail">
+        <div className="w-1/120 max-h-12">
+          <a>
             <img
               src="https://www.freepnglogos.com/uploads/vs-png/black-vs-logo-image-download-png-20.png"
               alt={props.team_a}
-              width={30}
-              height={30}
+              className="h-8 w-8"
             />
           </a>
         </div>
-        <div className="col-lg-1 col-md-1 col-xs-1">
-          <a className="thumbnail">
-            <img src={team_b_image} alt={props.team_b} />
+        <div className="w-1/12">
+          <a>
+            <img src={team_b_image_url} alt={props.team_b} className="w-full" />
           </a>
         </div>
 
-        <div>
+        <div className="ml-4">
           {props.r_id}
           <br />
           {props.team_a} vs {props.team_b}
         </div>
       </div>
 
-      <div className="justify-normal">
+      <div className="text-normal">
         <div>
           🕰️: {props.match_date} at {props.match_time}
         </div>
