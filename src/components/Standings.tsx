@@ -10,7 +10,10 @@ export default async function Standings() {
 
   return (
     <>
-      <div>
+      <h1 className="text-center font-mono text-6xl font-bold">
+        FINAL 8 STANDINGS
+      </h1>
+      <div className=" bg-lime-500 font-mono">
         {standingsGroups.map((group) => (
           <div>
             <h2 className="mb-6 text-center text-5xl font-bold">
@@ -37,16 +40,22 @@ export default async function Standings() {
                     className="border-b border-gray-200"
                   >
                     <td className="w-1/4 px-4 py-2">{team['post'].team}</td>
-                    <td className="px-4 py-2">{team['post'].win}</td>
-                    <td className="px-4 py-2">{team['post'].loss}</td>
-                    <td className="px-4 py-2">{team['post'].points}</td>
-                    <td className="px-4 py-2">
+                    <td className="px-4 py-2 text-center">
+                      {team['post'].win}
+                    </td>
+                    <td className="px-4 py-2 text-center">
+                      {team['post'].loss}
+                    </td>
+                    <td className="px-4 py-2 text-center">
+                      {team['post'].points}
+                    </td>
+                    <td className="px-4 py-2 text-center">
                       {(
                         parseFloat(team['post'].PF) /
                         parseFloat(team['post'].played)
                       ).toFixed(2)}
                     </td>
-                    <td className="px-4 py-2">
+                    <td className="px-4 py-2 text-center">
                       {(
                         parseFloat(team['post'].PG) /
                         parseFloat(team['post'].played)
