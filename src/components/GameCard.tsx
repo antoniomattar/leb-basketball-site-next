@@ -7,12 +7,12 @@ function GameCard(props: any) {
     <div className="row-auto m-6 mx-auto grid max-w-sm items-center rounded-3xl bg-slate-500 p-8  shadow-lg dark:bg-slate-800 md:p-5 ">
       <div className="text-center">{props.r_id}</div>
       <div className=" col-auto flex items-center justify-center">
-        <div className="w-1/12">
+        <div className="w-1/6">
           <a>
             <img src={team_a_image_url} alt={props.team_a} className="w-full" />
           </a>
         </div>
-        <div className="w-1/12">
+        <div className=" w-1/6 p-4">
           <a>
             <img
               src="https://www.freepnglogos.com/uploads/vs-png/black-vs-logo-image-download-png-20.png"
@@ -21,7 +21,7 @@ function GameCard(props: any) {
             />
           </a>
         </div>
-        <div className="w-1/12">
+        <div className="w-1/6">
           <a>
             <img src={team_b_image_url} alt={props.team_b} className="w-full" />
           </a>

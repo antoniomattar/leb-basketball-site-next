@@ -16,15 +16,13 @@ export default async function Standings() {
       <div className="font-mono">
         {standingsGroups.map((group) => (
           <div>
-            <table className="m-6 mx-auto w-full max-w-lg table-auto overflow-hidden bg-green-600 px-4 py-4 shadow-lg sm:rounded-3xl sm:px-6">
+            <table className="m-6 mx-auto w-auto max-w-full table-auto overflow-hidden bg-green-600 px-4 py-4 shadow-lg sm:rounded-3xl sm:px-6 ">
               <caption className=" mb-6 mt-6 caption-top text-2xl font-bold">
                 {group[0]['post'].name}
               </caption>
               <thead className=" bg-yellow-400 sm:rounded-3xl">
                 <tr>
-                  <th scope="col" data-width="15%">
-                    Team
-                  </th>
+                  <th scope="col">Team</th>
                   <th scope="col">W</th>
                   <th scope="col">L</th>
                   <th scope="col">Pts</th>
