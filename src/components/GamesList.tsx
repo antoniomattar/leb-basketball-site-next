@@ -8,7 +8,7 @@ export default async function GamesList() {
   // console.log(newsListRequest['posts'][0]['post']);
 
   return (
-    <>
+    <div id="games">
       <center>
         <h1 className="m-6 font-mono text-6xl font-bold ">GAMES </h1>
         <div className="font-mono">
@@ -17,6 +17,6 @@ export default async function GamesList() {
           ))}
         </div>
       </center>
-    </>
+    </div>
   );
 }

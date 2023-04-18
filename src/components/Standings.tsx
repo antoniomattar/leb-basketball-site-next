@@ -20,7 +20,7 @@ export default async function Standings() {
               <caption className=" mb-6 mt-6 caption-top text-2xl font-bold">
                 {group[0]['post'].name}
               </caption>
-              <thead>
+              <thead className=" bg-yellow-400 sm:rounded-3xl">
                 <tr>
                   <th scope="col" data-width="15%">
                     Team

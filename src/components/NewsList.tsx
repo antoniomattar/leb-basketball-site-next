@@ -3,11 +3,10 @@ export default async function NewsList(params: any) {
   const newsRequest = await fetch(
     'http://247basketball.live/json_timelineNew.php'
   ).then((response) => response.json());
-  console.log(newsRequest['posts11']);
-  const news = newsRequest['posts1'];
+  const news = newsRequest['posts11'];
 
   return (
-    <>
+    <div id="news">
       <h1 className="m-6 text-center font-mono text-6xl font-bold">NEWS</h1>
 
       <ul role="list" className="space-y-5 font-mono text-sm">
@@ -22,6 +21,6 @@ export default async function NewsList(params: any) {
           </li>
         ))}
       </ul>
-    </>
+    </div>
   );
 }
