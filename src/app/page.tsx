@@ -1,4 +1,5 @@
 import GamesList from '@/components/GamesList';
+import NewsList from '@/components/NewsList';
 import Standings from '@/components/Standings';
 
 export default async function page() {
@@ -8,6 +9,8 @@ export default async function page() {
       <Standings />
       {/* @ts-expect-error Server Component */}
       <GamesList />
+      {/* @ts-expect-error Server Component */}
+      <NewsList />
     </>
   );
 }

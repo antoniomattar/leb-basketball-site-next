@@ -10,20 +10,19 @@ export default async function Standings() {
 
   return (
     <>
-      <h1 className="text-center font-mono text-6xl font-bold">
+      <h1 className="m-6 text-center font-mono text-4xl font-bold">
         FINAL 8 STANDINGS
       </h1>
-      <div className=" bg-lime-500 font-mono">
+      <div className="font-mono">
         {standingsGroups.map((group) => (
           <div>
-            <h2 className="mb-6 text-center text-5xl font-bold">
-              {group[0]['post'].name}
-            </h2>
-
-            <table className="w-full table-auto">
+            <table className="m-1 mb-12 w-full table-auto overflow-hidden bg-green-600 px-4 py-4 shadow-lg sm:rounded-3xl sm:px-6">
+              <caption className=" mb-6 mt-6 caption-top text-2xl font-bold">
+                {group[0]['post'].name}
+              </caption>
               <thead>
                 <tr>
-                  <th scope="col" data-width="20%">
+                  <th scope="col" data-width="15%">
                     Team
                   </th>
                   <th scope="col">W</th>

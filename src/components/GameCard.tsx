@@ -4,14 +4,15 @@ function GameCard(props: any) {
   const team_a_image_url = `${BASE_URL}/logo/${props.team_a}_p.png`;
   const team_b_image_url = `${BASE_URL}/logo/${props.team_b}_p.png`;
   return (
-    <>
-      <div className="col-auto flex items-center">
-        <div className="w-1/12 items-center">
+    <div className="row-auto m-6 flex items-center rounded-3xl bg-slate-500 p-8 shadow-lg dark:bg-slate-800 md:flex md:p-0">
+      <div className="text-center">{props.r_id}</div>
+      <div className=" col-auto flex items-center">
+        <div className="w-1/12">
           <a>
             <img src={team_a_image_url} alt={props.team_a} className="w-full" />
           </a>
         </div>
-        <div className="w-1/12 items-center">
+        <div className="w-1/12">
           <a>
             <img
               src="https://www.freepnglogos.com/uploads/vs-png/black-vs-logo-image-download-png-20.png"
@@ -20,28 +21,23 @@ function GameCard(props: any) {
             />
           </a>
         </div>
-        <div className="w-1/12 items-center">
+        <div className="w-1/12">
           <a>
             <img src={team_b_image_url} alt={props.team_b} className="w-full" />
           </a>
         </div>
       </div>
       <div className="ml-4">
-        {props.r_id}
-        <br />
         {props.team_a} vs {props.team_b}
       </div>
 
-      <div className="text-normal">
+      <div className="text-justify">
         <div>
           🕰️: {props.match_date} at {props.match_time}
         </div>
         <div>🏟️: {props.venue}</div>
       </div>
-      <br />
-      <br />
-      <br />
-    </>
+    </div>
   );
 }
 

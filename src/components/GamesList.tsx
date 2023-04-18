@@ -10,8 +10,8 @@ export default async function GamesList() {
   return (
     <>
       <center>
-        <h1 className="font-mono text-6xl font-bold ">GAMES</h1>
-        <div className="bg-amber-500 font-mono">
+        <h1 className="m-6 font-mono text-6xl font-bold ">GAMES</h1>
+        <div className="font-mono">
           {gamesListRequest['posts'].map((game: any) => (
             <GameCard {...game['post']} />
           ))}
