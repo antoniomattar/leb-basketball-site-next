@@ -16,7 +16,7 @@ export default async function Standings() {
       <div className="font-mono">
         {standingsGroups.map((group) => (
           <div>
-            <table className="m-1 mb-12 w-full table-auto overflow-hidden bg-green-600 px-4 py-4 shadow-lg sm:rounded-3xl sm:px-6">
+            <table className="m-6 mx-auto w-full max-w-lg table-auto overflow-hidden bg-green-600 px-4 py-4 shadow-lg sm:rounded-3xl sm:px-6">
               <caption className=" mb-6 mt-6 caption-top text-2xl font-bold">
                 {group[0]['post'].name}
               </caption>

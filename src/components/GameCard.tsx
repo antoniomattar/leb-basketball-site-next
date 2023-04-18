@@ -4,9 +4,9 @@ function GameCard(props: any) {
   const team_a_image_url = `${BASE_URL}/logo/${props.team_a}_p.png`;
   const team_b_image_url = `${BASE_URL}/logo/${props.team_b}_p.png`;
   return (
-    <div className="row-auto m-6 flex items-center rounded-3xl bg-slate-500 p-8 shadow-lg dark:bg-slate-800 md:flex md:p-0">
+    <div className="row-auto m-6 mx-auto grid max-w-sm items-center rounded-3xl bg-slate-500 p-8  shadow-lg dark:bg-slate-800 md:p-5 ">
       <div className="text-center">{props.r_id}</div>
-      <div className=" col-auto flex items-center">
+      <div className=" col-auto flex items-center justify-center">
         <div className="w-1/12">
           <a>
             <img src={team_a_image_url} alt={props.team_a} className="w-full" />
@@ -31,7 +31,7 @@ function GameCard(props: any) {
         {props.team_a} vs {props.team_b}
       </div>
 
-      <div className="text-justify">
+      <div className="mx-auto text-left">
         <div>
           🕰️: {props.match_date} at {props.match_time}
         </div>
