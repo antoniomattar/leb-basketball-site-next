@@ -26,8 +26,6 @@ export default async function Standings() {
                   <th scope="col">W</th>
                   <th scope="col">L</th>
                   <th scope="col">Pts</th>
-                  <th scope="col">OFF RTG</th>
-                  <th scope="col">DEF RTG</th>
                 </tr>
               </thead>
               <tbody>
@@ -45,18 +43,6 @@ export default async function Standings() {
                     </td>
                     <td className="px-4 py-2 text-center">
                       {team['post'].points}
-                    </td>
-                    <td className="px-4 py-2 text-center">
-                      {(
-                        parseFloat(team['post'].PF) /
-                        parseFloat(team['post'].played)
-                      ).toFixed(2)}
-                    </td>
-                    <td className="px-4 py-2 text-center">
-                      {(
-                        parseFloat(team['post'].PG) /
-                        parseFloat(team['post'].played)
-                      ).toFixed(2)}
                     </td>
                   </tr>
                 ))}
