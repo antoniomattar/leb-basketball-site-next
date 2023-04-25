@@ -2,7 +2,12 @@ import GamesList from './GamesList';
 
 export default async function Round() {
   const allRoundsRequest = await fetch(
-    'http://247basketball.live/json_rounds_all.php'
+    'http://247basketball.live/json_rounds_all.php',
+    {
+      headers: {
+        'Cache-Control': 'no-cache, no-store, must-revalidate',
+      },
+    }
   ).then((response) => response.json());
   const allRounds = allRoundsRequest['posts'];
   const roundIdsAndNames = [];

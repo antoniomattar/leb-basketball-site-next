@@ -1,7 +1,12 @@
 /* eslint-disable react/jsx-key */
 export default async function NewsList(params: any) {
   const newsRequest = await fetch(
-    'http://247basketball.live/json_timelineNew.php'
+    'http://247basketball.live/json_timelineNew.php',
+    {
+      headers: {
+        'Cache-Control': 'no-cache, no-store, must-revalidate',
+      },
+    }
   ).then((response) => response.json());
   const postsNumber = Object.keys(newsRequest);
   const newsList = [];

@@ -1,12 +1,19 @@
 /* eslint-disable react/jsx-key */
 export default async function Standings() {
   const standingsRequest = await fetch(
-    'http://247basketball.live/json_standing_new_app.php?c_id=42'
+    'http://247basketball.live/json_standing_new_app.php?c_id=42',
+    {
+      headers: {
+        'Cache-Control': 'no-cache, no-store, must-revalidate',
+      },
+    }
   ).then((response) => response.json());
   const standingsGroups = [
     standingsRequest['Standing1'],
     standingsRequest['Standing2'],
   ];
+
+  console.log(standingsGroups[0]);
 
   return (
     <>

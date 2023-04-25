@@ -3,9 +3,11 @@ import GameCard from './GameCard';
 
 export default async function GamesList(props: any) {
   const gamesUrl = props.url;
-  const gamesListRequest = await fetch(gamesUrl).then((response) =>
-    response.json()
-  );
+  const gamesListRequest = await fetch(gamesUrl, {
+    headers: {
+      'Cache-Control': 'no-cache, no-store, must-revalidate',
+    },
+  }).then((response) => response.json());
 
   return (
     <div id="games">
