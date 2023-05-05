@@ -16,7 +16,7 @@ export default function VideoPlayer() {
   }, []);
 
   return (
-    <div>
+    <div className=" m-6 mx-auto w-6/12 rounded-sm border-2 border-red-500">
       <video id="video-player" controls></video>
     </div>
   );

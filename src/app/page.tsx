@@ -9,8 +9,8 @@ export default async function page() {
   return (
     <>
       <NavBar />
-      <VideoPlayer />
       <Divider />
+      <VideoPlayer />
       {/* @ts-expect-error Server Component */}
       <Standings />
       <Divider />
