@@ -27,7 +27,7 @@ export default function VideoPlayer() {
   return (
     <div>
       <h1 className=" text-center font-mono text-3xl font-bold">Live Stream</h1>
-      <div className=" m-6 mx-auto flex w-10/12 justify-center rounded-sm border-2 border-red-500 md:w-6/12">
+      <div className=" m-6 mx-auto flex w-10/12 justify-center rounded-md border-4 border-green-700 md:w-6/12">
         <video id="video-player" controls></video>
       </div>
     </div>
