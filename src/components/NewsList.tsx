@@ -4,13 +4,14 @@ export default async function NewsList(params: any) {
     'http://247basketball.live/json_timelineNew.php',
     {
       headers: {
-        'Cache-Control': 'no-cache, no-store, must-revalidate',
+        'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate',
       },
     }
   ).then((response) => response.json());
   const postsNumber = Object.keys(newsRequest);
   const newsList = [];
   for (let i = 0; i < postsNumber.length; i++) {
+    console.log(newsRequest[postsNumber[i]]);
     newsList.push(newsRequest[postsNumber[i]]);
   }
 

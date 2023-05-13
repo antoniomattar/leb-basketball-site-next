@@ -5,7 +5,7 @@ export default async function Round() {
     'http://247basketball.live/json_rounds_all.php',
     {
       headers: {
-        'Cache-Control': 'no-cache, no-store, must-revalidate',
+        'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate',
       },
     }
   ).then((response) => response.json());

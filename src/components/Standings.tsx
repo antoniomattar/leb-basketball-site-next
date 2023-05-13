@@ -4,7 +4,7 @@ export default async function Standings() {
     'http://247basketball.live/json_standing_new_app.php?c_id=42',
     {
       headers: {
-        'Cache-Control': 'no-cache, no-store, must-revalidate',
+        'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate',
       },
     }
   ).then((response) => response.json());
