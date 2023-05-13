@@ -11,7 +11,6 @@ export default async function NewsList(params: any) {
   const postsNumber = Object.keys(newsRequest);
   const newsList = [];
   for (let i = 0; i < postsNumber.length; i++) {
-    console.log(newsRequest[postsNumber[i]]);
     newsList.push(newsRequest[postsNumber[i]]);
   }
 

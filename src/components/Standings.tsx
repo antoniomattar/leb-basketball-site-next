@@ -13,10 +13,8 @@ export default async function Standings() {
     standingsRequest['Standing2'],
   ];
 
-  console.log(standingsGroups[0]);
-
   return (
-    <>
+    <div id="standings">
       <h1 className="m-6 text-center font-mono text-4xl font-bold">
         FINAL 8 STANDINGS
       </h1>
@@ -58,6 +56,6 @@ export default async function Standings() {
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 }

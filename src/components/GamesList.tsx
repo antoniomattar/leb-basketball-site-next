@@ -10,7 +10,7 @@ export default async function GamesList(props: any) {
   }).then((response) => response.json());
 
   return (
-    <div id="games">
+    <div>
       <center>
         <div className="font-mono">
           {gamesListRequest['posts'].map((game: any) => (
