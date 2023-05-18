@@ -4,7 +4,7 @@ function GameCard(props: any) {
   const team_a_image_url = `${BASE_URL}/logo/${props.team_a}_p.png`;
   const team_b_image_url = `${BASE_URL}/logo/${props.team_b}_p.png`;
   return (
-    <div className="row-auto m-6 mx-auto grid max-w-sm items-center rounded-3xl bg-amber-400 p-8  shadow-lg md:p-5 ">
+    <div className="row-auto m-6 mx-auto grid max-w-sm items-center rounded-3xl bg-green-600 p-8 shadow-lg md:p-5 ">
       <div className=" col-auto flex items-center justify-center">
         <div className="w-1/6">
           <a>

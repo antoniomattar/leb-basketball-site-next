@@ -20,7 +20,7 @@ export default async function NewsList(params: any) {
       {newsList.map((news: any) => (
         <ul role="list" className=" max-w-sm font-mono text-sm">
           {news.map((newsItem: any) => (
-            <li className="mb-6 overflow-hidden rounded-3xl bg-amber-400 px-4 py-4 shadow-lg sm:px-6">
+            <li className=" mb-6 overflow-hidden rounded-3xl bg-red-700 px-4 py-4 text-white shadow-lg sm:px-6">
               <div className="flex flex-col justify-start text-left">
                 <h2 className="font-bold">{newsItem['post'].published_date}</h2>
                 <p>{newsItem['post'].content}</p>
