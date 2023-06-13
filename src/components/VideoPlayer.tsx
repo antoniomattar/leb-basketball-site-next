@@ -3,20 +3,17 @@
 import React, { useEffect } from 'react';
 import Hls from 'hls.js';
 
-export default function VideoPlayer() {
+export default function VideoPlayer(props: any) {
   useEffect(() => {
     const userAgent = window.navigator.userAgent.toLowerCase();
     const isIos = /iphone|ipad|ipod/.test(userAgent);
     const video: any = document.getElementById('video-player');
     if (isIos) {
-      video.src =
-        'https://1333578254.rsc.cdn77.org/1537084837/tracks-v2a1/mono.m3u8';
+      video.src = props.videoUrl;
     } else {
       if (Hls.isSupported()) {
         const hls = new Hls();
-        hls.loadSource(
-          'https://1333578254.rsc.cdn77.org/1537084837/tracks-v2a1/mono.m3u8'
-        );
+        hls.loadSource(props.videoUrl);
         hls.attachMedia(video);
       } else {
         console.log('Hls.js is not supported');
