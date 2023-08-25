@@ -10,6 +10,10 @@ export default async function page() {
     <>
       <NavBar />
       <Divider />
+      <h1 className=" text-center font-mono text-3xl font-bold">
+        {' '}
+        FIBA WORLD CUP #YallaLebnen 🇱🇧
+      </h1>
       <VideoPlayer videoUrl="https://cllive.itworkscdn.net/lbcdramalive/token=nva=1692958369~dirs=1~hash=03813039743d21f752b28/drama/lb2_480p_chunks.m3u8" />
       {/* @ts-expect-error Server Component */}
       <Standings />
