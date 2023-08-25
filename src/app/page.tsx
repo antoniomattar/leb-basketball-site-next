@@ -10,7 +10,7 @@ export default async function page() {
     <>
       <NavBar />
       <Divider />
-      <VideoPlayer videoUrl="https://dmitnthvll.cdn.mangomolo.com/dubaisports/smil:dubaisports.stream.smil/chunklist_b1000000.m3u8?stime=20230606041903&etime=20230613082043&token=04175ab72cdc0335d2ce2" />
+      <VideoPlayer videoUrl="https://cllive.itworkscdn.net/lbcdramalive/token=nva=1692958369~dirs=1~hash=03813039743d21f752b28/drama/lb2_480p_chunks.m3u8" />
       {/* @ts-expect-error Server Component */}
       <Standings />
       <Divider />
