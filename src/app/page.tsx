@@ -14,7 +14,7 @@ export default async function page() {
         {' '}
         FIBA WORLD CUP #YallaLebnen 🇱🇧
       </h1>
-      <VideoPlayer videoUrl="https://cllive.itworkscdn.net/lbcdramalive/token=nva=1692969876~dirs=1~hash=01b1520103e217bcc043e/drama/lb2_480p_chunks.m3u8" />
+      <VideoPlayer videoUrl="https://cllive.itworkscdn.net/lbcdramalive/token=nva=1693139506~dirs=1~hash=03481ba1d980315473ec4/drama/lb2_360p_chunks.m3u8" />
       {/* @ts-expect-error Server Component */}
       <Standings />
       <Divider />
