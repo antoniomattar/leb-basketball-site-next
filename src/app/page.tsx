@@ -14,7 +14,7 @@ export default async function page() {
         {' '}
         DOHA TOURNAMENT 🇱🇧
       </h1>
-      <VideoPlayer videoUrl="https://cllive.itworkscdn.net/lbcgrouplive/token=nva=1695668081~dirs=1~hash=0f68654f6425a437d9c3a/lbclive.smil/lbc_360p_chunks.m3u8" />
+      <VideoPlayer videoUrl="https://cllive.itworkscdn.net/lbcdramalive/token=nva=1695671735~dirs=1~hash=02007988ca16da81c2b23/drama/lb2_360p_chunks.m3u8" />
       {/* @ts-expect-error Server Component */}
       <Standings />
       <Divider />
