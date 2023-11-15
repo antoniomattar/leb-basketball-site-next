@@ -14,7 +14,7 @@ export default async function page() {
         {' '}
         WASL TOURNAMENT 🇱🇧
       </h1>
-      <VideoPlayer videoUrl=" https://cllive.itworkscdn.net/evulpalive/token=nva=1700091972~dirs=1~hash=0247ed8670809e9d641c0/evulpa2.smil/evulpa2_source_chunks.m3u8" />
+      <VideoPlayer videoUrl=" https://cllive.itworkscdn.net/evulpalive/token=nva=1700092466~dirs=1~hash=0e1a9be0d403ee20def10/evulpa2.smil/playlist.m3u8" />
       {/* @ts-expect-error Server Component */}
       <Standings />
       <Divider />
