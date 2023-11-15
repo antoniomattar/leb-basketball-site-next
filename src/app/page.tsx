@@ -12,9 +12,9 @@ export default async function page() {
       <Divider />
       <h1 className=" text-center font-mono text-3xl font-bold">
         {' '}
-        DOHA TOURNAMENT 🇱🇧
+        WASL TOURNAMENT 🇱🇧
       </h1>
-      <VideoPlayer videoUrl="https://cllive.itworkscdn.net/lbcdramalive/token=nva=1695671735~dirs=1~hash=02007988ca16da81c2b23/drama/lb2_360p_chunks.m3u8" />
+      <VideoPlayer videoUrl=" https://cllive.itworkscdn.net/evulpalive/token=nva=1700091972~dirs=1~hash=0247ed8670809e9d641c0/evulpa2.smil/evulpa2_source_chunks.m3u8" />
       {/* @ts-expect-error Server Component */}
       <Standings />
       <Divider />
