@@ -12,9 +12,9 @@ export default async function page() {
       <Divider />
       <h1 className=" text-center font-mono text-3xl font-bold">
         {' '}
-        ASIA QUALI  🇱🇧
+        ASIA QUALI TOURNAMENT 🇱🇧
       </h1>
-      <VideoPlayer videoUrl="https://cdn1.ipslow.com/tv525_www.elahmad.com_lb2/index.m3u8?token=00c97a0f2823d40444940db0b144757438024216-baf1b1623ca4efe9c966a7666af43a23-1708712015-1708701215 " />
+      <VideoPlayer videoUrl="https://live.kwikmotion.com/lbcdramalive/drama/lbcdramapublish/lb2_480p/hdntl=exp=1708790872~acl=%2flbcdramalive%2fdrama%2f*~data=hdntl~hmac=aaff36ada722f95e91be5b37bd3815a1bccc50fa9a8e64dfa327af2923cf1f46/chunks.m3u8" />
       {/* @ts-expect-error Server Component */}
       <Standings />
       <Divider />
