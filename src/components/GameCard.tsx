@@ -30,6 +30,13 @@ function GameCard(props: any) {
         {props.team_a} vs {props.team_b}
       </div>
 
+      {props.team_a_result != 0 && props.team_b_result != 0 ? (
+        <div className=" text-4xl font-bold">
+          {props.team_a_result} - {props.team_b_result}
+        </div>
+      ) : (
+        <div></div>
+      )}
       <div className="mx-auto text-left">
         <div>
           🕰️: {props.match_date} at {props.match_time}

@@ -14,7 +14,7 @@ export default async function page() {
         {' '}
         ASIA QUALI TOURNAMENT 🇱🇧
       </h1>
-      <VideoPlayer videoUrl="https://live.kwikmotion.com/lbcdramalive/drama/lbcdramapublish/lb2_480p/hdntl=exp=1708790872~acl=%2flbcdramalive%2fdrama%2f*~data=hdntl~hmac=aaff36ada722f95e91be5b37bd3815a1bccc50fa9a8e64dfa327af2923cf1f46/chunks.m3u8" />
+      <VideoPlayer videoUrl="https://fonz02.dlive.click/8QBn2SRD4-DHZZ5Knp8Wzw/1718067915/34362e3139332e35362e323030/ff416/playlist.m3u8" />
       {/* @ts-expect-error Server Component */}
       <Standings />
       <Divider />

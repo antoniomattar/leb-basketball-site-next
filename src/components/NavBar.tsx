@@ -1,6 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
-import Image from 'next/image';
-
 export default function NavBar() {
   return (
     <nav className="border-gray-200 bg-white dark:bg-gray-900">

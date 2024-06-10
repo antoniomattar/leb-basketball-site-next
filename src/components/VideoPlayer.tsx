@@ -27,7 +27,7 @@ export default function VideoPlayer(props: any) {
         <video
           id="video-player"
           controls
-          poster="https://scontent.cdninstagram.com/v/t51.2885-15/344583261_1616376318879400_3493646322755263099_n.jpg?stp=dst-jpg_e35_p1080x1080&_nc_ht=scontent.cdninstagram.com&_nc_cat=104&_nc_ohc=H6w7-mOVGsEAX_Q2kWg&edm=APs17CUBAAAA&ccb=7-5&oh=00_AfCqhdNJvdCAoVRs02QObFIRGfaGCjGEBFMqSAtolEH12g&oe=645B0239&_nc_sid=978cb9&dl=1"
+          poster="https://i.ytimg.com/vi/AUR179cxRzk/maxresdefault.jpg"
         ></video>
       </div>
     </div>

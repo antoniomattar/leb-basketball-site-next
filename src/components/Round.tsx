@@ -2,7 +2,7 @@ import GamesList from './GamesList';
 
 export default async function Round() {
   const allRoundsRequest = await fetch(
-    'http://247basketball.live/json_rounds_all.php',
+    'http://247basketball.live/json_rounds_all.php?c_id=44',
     {
       headers: {
         'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate',
@@ -18,8 +18,8 @@ export default async function Round() {
     });
   }
 
-  const currentRound = roundIdsAndNames[roundIdsAndNames.length - 1];
-  const currentRoundGamesRequestUrl = `http://247basketball.live/json_r_matchs.php?r_id=${currentRound['id']}`;
+  var currentRoundIndex = roundIdsAndNames.length - 3;
+  var currentRound = roundIdsAndNames[currentRoundIndex];
 
   return (
     <div id="games">
@@ -45,7 +45,7 @@ export default async function Round() {
         </button>
       </div>
       {/* @ts-expect-error Server Component */}
-      <GamesList url={currentRoundGamesRequestUrl} />
+      <GamesList roundId={currentRound['id']} />
     </div>
   );
 }
