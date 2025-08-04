@@ -3,27 +3,60 @@ import NavBar from '@/components/NavBar';
 import NewsList from '@/components/NewsList';
 import Round from '@/components/Round';
 import Standings from '@/components/Standings';
-import VideoPlayer from '@/components/VideoPlayer';
+import StreamSection from '@/components/StreamSection';
 
 export default async function page() {
   return (
-    <>
+    <div className="min-h-screen bg-gray-50">
+      {/* Navigation */}
       <NavBar />
+
+      {/* Hero Section */}
+      <section className="bg-white py-12">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="mb-4 text-4xl font-bold text-black md:text-5xl">
+            Asia Cup 2025
+          </h1>
+          <p className="text-lg text-black md:text-xl">#YalaLebnen 🇱🇧</p>
+        </div>
+      </section>
+
+      {/* Live Stream Section */}
+      <section className="bg-white py-12">
+        <div className="container mx-auto px-4">
+          <h2 className="mb-8 text-center text-3xl font-bold text-gray-900">
+            🔴 Live Stream
+          </h2>
+          <StreamSection />
+        </div>
+      </section>
+
       <Divider />
-      <h1 className=" text-center font-mono text-3xl font-bold">
-        {' '}
-        ASIA QUALI TOURNAMENT 🇱🇧
-      </h1>
-      <iframe width="640" height="360" src="//ok.ru/videoembed/9390574673522?nochat=1" frameBorder="0" allow="autoplay" allowFullScreen></iframe>
-      {/* <VideoPlayer videoUrl=" https://live.kwikmotion.com/lbcdramalive/drama/lbcdramapublish/lb2_480p/hdntl=exp=1726385984~acl=%2flbcdramalive%2fdrama%2f*~data=hdntl~hmac=607c30b655cd5c9af2a8303d59477fca569ca6947ff2aa0462ab457b3af2f2c7/chunks.m3u8" /> */}
-      {/* @ts-expect-error Server Component */}
-      <Standings />
+
+      {/* Standings Section */}
+      <section className="py-12">
+        <div className="container mx-auto px-4">
+          <Standings />
+        </div>
+      </section>
+
       <Divider />
-      {/* @ts-expect-error Server Component */}
-      <Round />
+
+      {/* Games Section */}
+      <section className="bg-white py-12">
+        <div className="container mx-auto px-4">
+          <Round />
+        </div>
+      </section>
+
       <Divider />
-      {/* @ts-expect-error Server Component */}
-      <NewsList />
-    </>
+
+      {/* News Section */}
+      <section className="py-12">
+        <div className="container mx-auto px-4">
+          <NewsList />
+        </div>
+      </section>
+    </div>
   );
 }
