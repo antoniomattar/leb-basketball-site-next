@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import VideoPlayer from './VideoPlayer';
 
+
 interface Stream {
   label: string;
   url: string;
@@ -12,7 +13,7 @@ interface Stream {
 const STREAMS: Stream[] = [
   {
     label: 'Stream Arabic',
-    url: 'https://ok.ru/video/10614336265842',
+    url: 'https://player.twitch.tv/?channel=lebanon2025&parent=antoniomattar.com&autoplay=false&muted=false&time=0s',
     type: 'iframe',
   },
   {
