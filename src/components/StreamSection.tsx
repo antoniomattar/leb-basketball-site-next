@@ -3,18 +3,19 @@
 import React, { useState } from 'react';
 import VideoPlayer from './VideoPlayer';
 
-
 interface Stream {
   label: string;
   url: string;
-  type: 'iframe' | 'hls';
+  type: 'iframe' | 'hls' | 'twitch';
+  channelName?: string;
 }
 
 const STREAMS: Stream[] = [
   {
     label: 'Stream Arabic',
-    url: 'https://player.twitch.tv/?channel=lebanon2025&parent=antoniomattar.com&autoplay=false&muted=false&time=0s',
-    type: 'iframe',
+    url: 'lebanon2025',
+    type: 'twitch',
+    channelName: 'lebanon2025',
   },
   {
     label: 'Stream English',
