@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import VideoPlayer from './VideoPlayer';
 
+
 interface Stream {
   label: string;
   url: string;
@@ -13,14 +14,14 @@ interface Stream {
 const STREAMS: Stream[] = [
   {
     label: 'Stream Arabic',
-    url: 'lebanon2025',
-    type: 'twitch',
-    channelName: 'lebanon2025',
+    url: 'https://ok.ru/video/10614629932658',
+    type: 'iframe',
   },
   {
     label: 'Stream English',
-    url: 'https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8',
-    type: 'hls',
+    url: 'lebanon2025',
+    type: 'twitch',
+    channelName: 'lebanon2025',
   },
 ];
 
