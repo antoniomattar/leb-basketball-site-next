@@ -11,23 +11,24 @@ export default async function page() {
       {/* Navigation */}
       <NavBar />
 
-      {/* Hero Section */}
-      <section className="bg-white py-12">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="mb-4 text-4xl font-bold text-black md:text-5xl">
-            Asia Cup 2025
-          </h1>
-          <p className="text-lg text-black md:text-xl">#YalaLebnen 🇱🇧</p>
-        </div>
-      </section>
-
-      {/* Live Stream Section */}
-      <section className="bg-white py-12">
+      {/* Hero Section with Live Stream */}
+      <section className="bg-white py-8">
         <div className="container mx-auto px-4">
-          <h2 className="mb-8 text-center text-3xl font-bold text-gray-900">
-            🔴 Live Stream
-          </h2>
-          <StreamSection />
+          {/* Header */}
+          <div className="mb-8 text-center">
+            <h1 className="mb-2 text-4xl font-bold text-black md:text-5xl">
+              Asia Cup 2025
+            </h1>
+            <p className="text-lg text-black">#YalaLebnen 🇱🇧</p>
+          </div>
+
+          {/* Live Stream */}
+          <div className="mb-6">
+            <h2 className="mb-6 text-center text-2xl font-bold text-gray-900">
+              🔴 Live Stream
+            </h2>
+            <StreamSection />
+          </div>
         </div>
       </section>
 

@@ -3,11 +3,30 @@
 import React, { useEffect, useRef } from 'react';
 import Hls from 'hls.js';
 
-export default function VideoPlayer(props: { videoUrl: string }) {
+interface VideoPlayerProps {
+  videoUrl: string;
+  mediaType?: 'hls' | 'iframe';
+}
+
+export default function VideoPlayer({
+  videoUrl,
+  mediaType = 'hls',
+}: VideoPlayerProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const hlsRef = useRef<Hls | null>(null);
 
+  // Function to convert OK.ru URL to embed format
+  const getEmbedUrl = (url: string): string => {
+    if (url.includes('ok.ru/video/')) {
+      const videoId = url.split('video/')[1];
+      return `https://ok.ru/videoembed/${videoId}`;
+    }
+    return url;
+  };
+
   useEffect(() => {
+    if (mediaType !== 'hls') return;
+
     const video = videoRef.current;
     if (!video) return;
 
@@ -15,7 +34,7 @@ export default function VideoPlayer(props: { videoUrl: string }) {
     const isIos = /iphone|ipad|ipod/.test(userAgent);
 
     if (isIos) {
-      video.src = props.videoUrl;
+      video.src = videoUrl;
     } else {
       if (Hls.isSupported()) {
         if (hlsRef.current) {
@@ -23,10 +42,10 @@ export default function VideoPlayer(props: { videoUrl: string }) {
         }
         const hls = new Hls();
         hlsRef.current = hls;
-        hls.loadSource(props.videoUrl);
+        hls.loadSource(videoUrl);
         hls.attachMedia(video);
       } else {
-        video.src = props.videoUrl;
+        video.src = videoUrl;
         console.log('Hls.js is not supported');
       }
     }
@@ -37,17 +56,34 @@ export default function VideoPlayer(props: { videoUrl: string }) {
         hlsRef.current = null;
       }
     };
-  }, [props.videoUrl]);
+  }, [videoUrl, mediaType]);
+
+  if (mediaType === 'iframe') {
+    return (
+      <div className="w-full">
+        <div className="aspect-video w-full">
+          <iframe
+            src={getEmbedUrl(videoUrl)}
+            className="h-full w-full rounded-lg"
+            frameBorder="0"
+            allowFullScreen
+            allow="autoplay; encrypted-media; picture-in-picture"
+            title="Live Stream"
+          />
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <div>
-      <div className="m-6 mx-auto flex w-10/12 justify-center rounded-md border-4 border-green-700 md:w-6/12">
+    <div className="w-full">
+      <div className="aspect-video w-full">
         <video
           ref={videoRef}
           controls
           poster="https://i.ytimg.com/vi/AUR179cxRzk/maxresdefault.jpg"
-          style={{ width: '100%' }}
-        ></video>
+          className="h-full w-full rounded-lg object-cover"
+        />
       </div>
     </div>
   );
