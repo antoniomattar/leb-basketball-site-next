@@ -1,0 +1,25 @@
+{
+  "name": "FIBA Asia Cup 2025 🇱🇧 | #YallaLebnen",
+  "short_name": "Asia Cup 2025",
+  "description": "Follow the FIBA Asia Cup 2025 live! Get real-time scores, standings, news and live streams. Support Lebanon 🇱🇧 with #YallaLebnen.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#16a34a",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["sports", "news", "entertainment"],
+  "lang": "en",
+  "dir": "ltr"
+}

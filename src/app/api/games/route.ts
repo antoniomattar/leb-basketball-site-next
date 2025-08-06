@@ -29,8 +29,14 @@ export async function GET() {
     // Log cache status for debugging
     if (cacheStats) {
       console.log(
-        `📊 Cache stats: Age: ${cacheStats.age}min, Requests today: ${cacheStats.requestCount}, Last fetch: ${cacheStats.lastFetch}`
+        `📊 Cache stats: Age: ${cacheStats.age}min, Requests today: ${
+          cacheStats.requestCount
+        }/${cacheStats.remaining + cacheStats.requestCount}, Last fetch: ${
+          cacheStats.lastFetch
+        }`
       );
+    } else {
+      console.log('💭 No cache data found, will fetch fresh data');
     }
 
     // Check if we should use cached data
@@ -38,14 +44,18 @@ export async function GET() {
       console.log('⚡ Serving games data from cache');
       const cachedData = gamesCache.getCachedData();
 
-      // Add cache headers to inform client about cached data
-      return NextResponse.json(cachedData, {
-        headers: {
-          'Cache-Control': 'public, max-age=1800', // 30 minutes client cache
-          'X-Cache-Status': 'HIT',
-          'X-Cache-Age': cacheStats?.age.toString() || '0',
-        },
-      });
+      if (cachedData) {
+        // Add cache headers to inform client about cached data
+        return NextResponse.json(cachedData, {
+          headers: {
+            'Cache-Control':
+              'public, max-age=1800, stale-while-revalidate=3600', // 30 min cache, 1 hour stale
+            'X-Cache-Status': 'HIT',
+            'X-Cache-Age': cacheStats?.age.toString() || '0',
+            'X-Requests-Remaining': cacheStats?.remaining.toString() || '0',
+          },
+        });
+      }
     }
 
     // Check rate limiting
@@ -56,37 +66,49 @@ export async function GET() {
       if (staleData) {
         return NextResponse.json(staleData, {
           headers: {
-            'Cache-Control': 'public, max-age=3600', // 1 hour client cache for stale data
+            'Cache-Control':
+              'public, max-age=3600, stale-while-revalidate=7200', // 1 hour cache, 2 hours stale
             'X-Cache-Status': 'STALE',
             'X-Rate-Limit': 'EXCEEDED',
+            'X-Requests-Remaining': '0',
           },
         });
       } else {
         return NextResponse.json(
           {
             error: 'Service temporarily unavailable - daily API limit reached',
-            retryAfter: '1 hour',
+            retryAfter: '6 hours',
+            message: 'Please try again later or check back tomorrow',
           },
-          { status: 503 }
+          {
+            status: 503,
+            headers: {
+              'Retry-After': '21600', // 6 hours in seconds
+            },
+          }
         );
       }
     }
 
     // Fetch fresh data
+    console.log('🔄 Attempting to fetch fresh data from API...');
     try {
       const freshData = await fetchGamesFromAPI();
       gamesCache.setCachedData(freshData);
 
       const newStats = gamesCache.getCacheStats();
       console.log(
-        `📈 Cache updated. Requests today: ${newStats?.requestCount || 0}`
+        `📈 Cache updated. Requests today: ${
+          newStats?.requestCount || 0
+        }, Remaining: ${newStats?.remaining || 0}`
       );
 
       return NextResponse.json(freshData, {
         headers: {
-          'Cache-Control': 'public, max-age=1800', // 30 minutes client cache
+          'Cache-Control': 'public, max-age=1800, stale-while-revalidate=3600', // 30 min cache, 1 hour stale
           'X-Cache-Status': 'MISS',
           'X-Requests-Today': newStats?.requestCount.toString() || '1',
+          'X-Requests-Remaining': newStats?.remaining.toString() || '0',
         },
       });
     } catch (fetchError) {
@@ -98,14 +120,29 @@ export async function GET() {
         console.log('🔄 Serving stale cache due to fetch error');
         return NextResponse.json(fallbackData, {
           headers: {
-            'Cache-Control': 'public, max-age=3600',
+            'Cache-Control':
+              'public, max-age=1800, stale-while-revalidate=3600',
             'X-Cache-Status': 'STALE-ERROR',
             'X-Error': 'Fresh fetch failed',
+            'X-Requests-Remaining': cacheStats?.remaining.toString() || '0',
           },
         });
       }
 
-      throw fetchError; // Re-throw if no cache available
+      // No cache available, return error
+      return NextResponse.json(
+        {
+          error: 'Failed to fetch games data',
+          message: 'External API unavailable and no cached data found',
+          retryAfter: '30 minutes',
+        },
+        {
+          status: 503,
+          headers: {
+            'Retry-After': '1800', // 30 minutes
+          },
+        }
+      );
     }
   } catch (error) {
     console.error('💥 Games API critical error:', error);

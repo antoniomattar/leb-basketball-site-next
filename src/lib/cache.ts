@@ -10,15 +10,57 @@ interface CacheEntry {
 export const CACHE_CONFIG = {
   DURATION: 6 * 60 * 60 * 1000, // 6 hours in milliseconds
   REFRESH_HOUR: 14, // 2 PM - afternoon refresh time
-  MAX_DAILY_REQUESTS: 100,
-  CACHE_KEY: 'games_cache_v1',
+  MAX_DAILY_REQUESTS: 90, // Reduced to be more conservative
+  CACHE_KEY: 'games_cache_v2',
 };
+
+// Global in-memory cache as fallback
+let memoryCache: CacheEntry | null = null;
 
 export class GamesCacheManager {
   private cache: CacheEntry | null = null;
 
   constructor() {
-    // In a real implementation, you'd load from persistent storage here
+    this.loadCache();
+  }
+
+  private loadCache(): void {
+    // First try to load from memory cache (for same process)
+    if (memoryCache) {
+      this.cache = memoryCache;
+      return;
+    }
+
+    // Try to load from environment variables (for serverless persistence)
+    try {
+      const envCache = process.env.GAMES_CACHE_DATA;
+      if (envCache) {
+        const parsed = JSON.parse(envCache);
+        const cacheAge = Date.now() - parsed.timestamp;
+
+        // Only use env cache if it's less than 24 hours old
+        if (cacheAge < 24 * 60 * 60 * 1000) {
+          this.cache = parsed;
+          memoryCache = parsed;
+        }
+      }
+    } catch (error) {
+      console.log('No valid cache found in environment');
+    }
+  }
+
+  private saveCache(): void {
+    // Save to memory cache
+    memoryCache = this.cache;
+
+    // Save to environment (in serverless, this persists for the function lifetime)
+    if (this.cache) {
+      try {
+        process.env.GAMES_CACHE_DATA = JSON.stringify(this.cache);
+      } catch (error) {
+        console.log('Failed to save cache to environment');
+      }
+    }
   }
 
   shouldRefreshCache(): boolean {
@@ -39,7 +81,8 @@ export class GamesCacheManager {
     // If it's afternoon and we haven't fetched today, refresh
     if (
       now.getHours() >= CACHE_CONFIG.REFRESH_HOUR &&
-      this.cache.lastFetch !== today
+      this.cache.lastFetch !== today &&
+      this.cache.requestCount < CACHE_CONFIG.MAX_DAILY_REQUESTS
     ) {
       return true;
     }
@@ -70,7 +113,7 @@ export class GamesCacheManager {
 
     // Increment request count if same day, otherwise reset
     const requestCount =
-      this.cache?.lastFetch === today ? this.cache.requestCount + 1 : 1;
+      this.cache?.lastFetch === today ? (this.cache.requestCount || 0) + 1 : 1;
 
     this.cache = {
       data,
@@ -78,23 +121,39 @@ export class GamesCacheManager {
       lastFetch: today,
       requestCount,
     };
+
+    this.saveCache();
   }
 
   getCacheStats(): {
     age: number;
     requestCount: number;
     lastFetch: string;
+    remaining: number;
   } | null {
     if (!this.cache) return null;
 
     const now = new Date();
     const age = now.getTime() - this.cache.timestamp;
+    const today = now.toISOString().split('T')[0];
+
+    // Adjust request count for new day
+    const requestCount =
+      this.cache.lastFetch === today ? this.cache.requestCount : 0;
 
     return {
       age: Math.floor(age / 1000 / 60), // Age in minutes
-      requestCount: this.cache.requestCount,
+      requestCount,
       lastFetch: this.cache.lastFetch,
+      remaining: CACHE_CONFIG.MAX_DAILY_REQUESTS - requestCount,
     };
+  }
+
+  // Force refresh cache (for testing)
+  forceRefresh(): void {
+    this.cache = null;
+    memoryCache = null;
+    delete process.env.GAMES_CACHE_DATA;
   }
 }
 
