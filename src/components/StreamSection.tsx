@@ -14,7 +14,7 @@ interface Stream {
 const STREAMS: Stream[] = [
   {
     label: 'Stream Arabic',
-    url: 'https://ok.ru/video/10614629932658',
+    url: 'https://ok.ru/video/10619995823730',
     type: 'iframe',
   },
   {
