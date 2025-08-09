@@ -66,7 +66,7 @@ export default function VideoPlayer({
 
     return (
       <div className="w-full">
-        <div className="aspect-video flex w-full items-center justify-center rounded-lg bg-gray-900">
+        <div className="flex h-[500px] min-h-[500px] w-full items-center justify-center rounded-lg bg-gray-900">
           <div className="p-8 text-center text-white">
             <svg
               className="mx-auto mb-4 h-16 w-16 text-purple-500"
@@ -102,7 +102,7 @@ export default function VideoPlayer({
 
     return (
       <div className="w-full">
-        <div className="aspect-video relative w-full rounded-lg bg-gray-900">
+        <div className="relative h-[500px] min-h-[500px] w-full rounded-lg bg-gray-900">
           <iframe
             src={getEmbedUrl(videoUrl)}
             className="h-full w-full rounded-lg"
@@ -137,7 +137,7 @@ export default function VideoPlayer({
 
   return (
     <div className="w-full">
-      <div className="aspect-video w-full">
+      <div className="h-[500px] min-h-[500px] w-full">
         <video
           ref={videoRef}
           controls

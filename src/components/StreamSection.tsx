@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import VideoPlayer from './VideoPlayer';
 
-
 interface Stream {
   label: string;
   url: string;
@@ -13,8 +12,13 @@ interface Stream {
 
 const STREAMS: Stream[] = [
   {
-    label: 'Stream Arabic',
+    label: 'Stream Arabic (LB2)',
     url: 'https://ok.ru/video/10619995823730',
+    type: 'iframe',
+  },
+  {
+    label: 'Stream English (with ads)',
+    url: 'https://embedsports.top/embed/echo/canterbury-bulldogs-vs-new-zealand-warriors-rugby-7/1',
     type: 'iframe',
   },
   {
@@ -29,9 +33,9 @@ export default function StreamSection() {
   const [selected, setSelected] = useState(0);
 
   return (
-    <div className="mx-auto max-w-5xl">
+    <div className="mx-auto max-w-6xl">
       {/* Stream Selector */}
-      <div className="mb-6 flex justify-center">
+      <div className="mb-8 flex justify-center">
         <div className="inline-flex rounded-lg bg-gray-100 p-1">
           {STREAMS.map((stream, idx) => (
             <button
@@ -53,7 +57,10 @@ export default function StreamSection() {
       </div>
 
       {/* Video Player */}
-      <div className="overflow-hidden rounded-lg bg-black shadow-lg">
+      <div
+        className="overflow-hidden rounded-lg bg-black shadow-lg"
+        style={{ minHeight: '500px' }}
+      >
         <VideoPlayer
           videoUrl={STREAMS[selected].url}
           mediaType={STREAMS[selected].type}
