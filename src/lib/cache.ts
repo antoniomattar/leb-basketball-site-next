@@ -8,10 +8,10 @@ interface CacheEntry {
 
 // Configuration
 export const CACHE_CONFIG = {
-  DURATION: 6 * 60 * 60 * 1000, // 6 hours in milliseconds
-  REFRESH_HOUR: 14, // 2 PM - afternoon refresh time
+  DURATION: 2 * 60 * 60 * 1000, // 2 hours in milliseconds (shorter for live sports)
+  REFRESH_HOUR: 12, // 12 PM - noon refresh time
   MAX_DAILY_REQUESTS: 90, // Reduced to be more conservative
-  CACHE_KEY: 'games_cache_v2',
+  CACHE_KEY: 'games_cache_v3', // Updated cache key
 };
 
 // Global in-memory cache as fallback

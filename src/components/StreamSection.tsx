@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import VideoPlayer from './VideoPlayer';
 
+
 interface Stream {
   label: string;
   url: string;
@@ -18,7 +19,7 @@ const STREAMS: Stream[] = [
   },
   {
     label: 'Stream English (with ads)',
-    url: 'https://embedsports.top/embed/echo/canterbury-bulldogs-vs-new-zealand-warriors-rugby-7/1',
+    url: 'https://embedsports.top/embed/bravo/1754737200000-china-jordan/1',
     type: 'iframe',
   },
   {
